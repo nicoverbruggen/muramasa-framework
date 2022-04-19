@@ -2,11 +2,8 @@
 
 require 'vendor/autoload.php';
 
-use Framework\Exceptions\Handler;
-use Framework\Support\Greeter;
+use Framework\Application\Application;
 
-Handler::register();
-
-(new Greeter("Nico"))->sayHello();
-
-dd($_SERVER);
+$app = new Application();
+$app->boot();
+$app->run();
