@@ -2,10 +2,10 @@
 
 require 'vendor/autoload.php';
 
-use Framework\Greeter;
-use Framework\ExceptionHandler;
+use Framework\Exceptions\Handler;
+use Framework\Support\Greeter;
 
-ExceptionHandler::register();
+Handler::register();
 
 (new Greeter("Nico"))->sayHello();
 

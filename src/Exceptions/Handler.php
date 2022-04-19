@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework;
+namespace Framework\Exceptions;
 
-class ExceptionHandler
+class Handler
 {
     public static function register()
     {
