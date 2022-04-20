@@ -19,10 +19,9 @@ class Application
 
     public function run()
     {
-        dd($this->request);
+        $path = view_path('layout.html');
+        $html = file_get_contents($path);
 
-        (new Greeter("Nico"))->sayHello();
-
-        dd($_SERVER);
+        dd($html);
     }
 }
