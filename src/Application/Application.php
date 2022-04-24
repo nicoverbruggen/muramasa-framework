@@ -4,22 +4,29 @@ namespace Framework\Application;
 
 use Framework\Exceptions\Handler;
 use Framework\Http\Request;
+use Framework\Routing\Router;
 
 class Application
 {
-    public ?Request $request = null;
+    public Request $request;
+    public Router $router;
 
-    public function boot()
+    public function __construct()
     {
         Handler::register();
 
         $this->request = new Request($_SERVER);
+        $this->router = new Router();
+        $this->router->activate();
+    }
+
+    public function boot()
+    {
+        require __DIR__ . '/../routes.php';
     }
 
     public function run()
     {
-        echo view('homepage', [
-            'title' => 'Homepage'
-        ]);
+        $this->router->resolve($this->request);
     }
 }

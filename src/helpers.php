@@ -4,7 +4,10 @@ use Framework\Renderer\Katana;
 
 function dd($variable) {
     echo "<pre>";
-    var_dump(htmlspecialchars($variable));
+    if (is_string($variable)) {
+        $variable = htmlspecialchars($variable);
+    }
+    var_dump($variable);
     die();
 }
 
@@ -19,7 +22,7 @@ function view_path(string $view): ?string {
 }
 
 function view($view, $fields): string {
-    $layout = new Katana('layout');
+    $layout = new Katana();
     
     $values = array_merge($fields, [
         'body' => (new Katana($view))->render($fields)

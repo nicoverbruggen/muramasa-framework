@@ -5,7 +5,7 @@ namespace Framework\Renderer;
 class Katana
 {
     public function __construct(
-        public string $layout = 'layout',
+        public string $layout = 'layouts/main',
         public array $fields = ['title', 'body']
     ) {}
 
