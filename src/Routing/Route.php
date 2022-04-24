@@ -16,15 +16,13 @@ class Route
         return (new $this->controller())->{$this->function}();
     }
 
-    // Static helpers!
-
     public static function get($url, $controller, $function)
     {
-        Router::$shared->routes[] = new Route("GET", $url, $controller, $function);
+        Router::$shared->register(new Route("GET", $url, $controller, $function));
     }
 
     public static function post($url, $controller, $function)
     {
-        Router::$shared->routes[] = new Route("POST", $url, $controller, $function);
+        Router::$shared->register(new Route("POST", $url, $controller, $function));
     }
 }

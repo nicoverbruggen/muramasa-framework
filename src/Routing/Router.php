@@ -11,16 +11,22 @@ class Router
     /** @var array<Route> */
     public array $routes = [];
 
-    public function activate() {
+    public function activate()
+    {
         self::$shared = $this;
     }
 
-    public function matches($url): ?Route
+    public function register(Route $route)
     {
-        foreach ($this->routes as $route) {
-            if ($route->url == $url) {
-                return $route;
-            }
+        Router::$shared->routes[$route->method . '::' . $route->url] = $route;
+    }
+
+    public function matches(Request $request): ?Route
+    {
+        $key = $request->method . '::' . $request->uri;
+
+        if (array_key_exists($key, $this->routes)) {
+            return $this->routes[$key];
         }
 
         return null;
@@ -28,7 +34,7 @@ class Router
 
     public function resolve(Request $request)
     {
-        $route = $this->matches($request->uri);
+        $route = $this->matches($request);
 
         if ($route == null) {
             http_response_code(404);
