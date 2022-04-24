@@ -4,7 +4,6 @@ namespace Framework\Application;
 
 use Framework\Exceptions\Handler;
 use Framework\Http\Request;
-use Framework\Support\Greeter;
 
 class Application
 {
@@ -19,9 +18,8 @@ class Application
 
     public function run()
     {
-        $path = view_path('layout.html');
-        $html = file_get_contents($path);
-
-        dd($html);
+        echo view('homepage', [
+            'title' => 'Homepage'
+        ]);
     }
 }
