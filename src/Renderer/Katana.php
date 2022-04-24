@@ -30,8 +30,8 @@ class Katana
             $template = str_replace('@{' . $field . '}', $replacement, $template);
         }
 
-        $cachedFileName = str_replace('/', '_', $this->layout);
-        $cachedFilePath = root_path('cache/' . $cachedFileName);
+        $cachedFileName = str_replace('/', '.', $this->layout);
+        $cachedFilePath = root_path('cache/' . $cachedFileName . '.katana.php');
 
         file_put_contents($cachedFilePath, $template);
 
