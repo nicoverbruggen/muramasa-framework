@@ -1,5 +1,6 @@
 <?php
 
+use Framework\Application\Application;
 use Framework\Renderer\Katana;
 
 function dd($variable) {
@@ -9,6 +10,11 @@ function dd($variable) {
     }
     var_dump($variable);
     die();
+}
+
+function root_path(string $fileName): string
+{
+    return __DIR__ . '/../' . $fileName;
 }
 
 function view_path(string $view): ?string {
@@ -29,4 +35,8 @@ function view($view, $fields): string {
     ]);
 
     return $layout->render($values);
+}
+
+function app(): Application {
+    return Application::$instance;
 }

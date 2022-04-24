@@ -16,7 +16,7 @@ class Katana
 
     public function render($values = []): string
     {
-        $path = view_path($this->layout . '.html');
+        $path = view_path($this->layout . '.katana.php');
 
         $template = file_get_contents($path);
 
@@ -30,6 +30,15 @@ class Katana
             $template = str_replace('@{' . $field . '}', $replacement, $template);
         }
 
-        return $template;
+        $cachedFileName = str_replace('/', '_', $this->layout);
+        $cachedFilePath = root_path('cache/' . $cachedFileName);
+
+        file_put_contents($cachedFilePath, $template);
+
+        ob_start();
+        include $cachedFilePath;
+        $result = ob_get_clean();
+
+        return $result;
     }
 }

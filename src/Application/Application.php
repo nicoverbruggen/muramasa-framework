@@ -8,6 +8,8 @@ use Framework\Routing\Router;
 
 class Application
 {
+    public static Application $instance;
+
     public Request $request;
     public Router $router;
 
@@ -18,6 +20,8 @@ class Application
         $this->request = new Request($_SERVER);
         $this->router = new Router();
         $this->router->activate();
+
+        self::$instance = $this;
     }
 
     public function boot()
