@@ -1,4 +1,6 @@
 <p>
     Welcome to <b>Framework</b>, a brand new PHP framework inspired by Laravel.
 </p>
-<?php echo 'We can even run PHP!'; ?>
+<p>
+    <?php echo 'We can even run raw PHP, which is pretty cool!'; ?>
+</p>

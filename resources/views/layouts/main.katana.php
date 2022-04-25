@@ -9,11 +9,13 @@
 </head>
 <body>
     <header>
-        <h1>Framework</h1>
+        <h1><a href='/'>Framework</a></h1>
     </header>
-    @{body}
+    <main>
+        @{body}
+    </main>
     <footer>
-        <p>(c) 2022, Nico Verbruggen.</p>
+        <p>&copy; 2022, Nico Verbruggen. All rights reserved.</p>
     </footer>
 </body>
 </html>
