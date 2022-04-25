@@ -18,11 +18,11 @@ class Route
 
     public static function get($url, $controller, $function)
     {
-        Router::$shared->register(new Route("GET", $url, $controller, $function));
+        app()->router->register(new Route("GET", $url, $controller, $function));
     }
 
     public static function post($url, $controller, $function)
     {
-        Router::$shared->register(new Route("POST", $url, $controller, $function));
+        app()->router->register(new Route("POST", $url, $controller, $function));
     }
 }

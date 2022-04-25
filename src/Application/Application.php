@@ -19,7 +19,6 @@ class Application
 
         $this->request = new Request($_SERVER);
         $this->router = new Router();
-        $this->router->activate();
 
         self::$instance = $this;
     }

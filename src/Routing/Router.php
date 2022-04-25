@@ -6,19 +6,12 @@ use Framework\Http\Request;
 
 class Router
 {
-    public static Router $shared;
-
     /** @var array<Route> */
     public array $routes = [];
 
-    public function activate()
-    {
-        self::$shared = $this;
-    }
-
     public function register(Route $route)
     {
-        Router::$shared->routes[$route->method . '::' . $route->url] = $route;
+        app()->router->routes[$route->method . '::' . $route->url] = $route;
     }
 
     public function matches(Request $request): ?Route

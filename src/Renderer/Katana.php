@@ -30,15 +30,32 @@ class Katana
             $template = str_replace('@{' . $field . '}', $replacement, $template);
         }
 
-        $cachedFileName = str_replace('/', '.', $this->layout);
-        $cachedFilePath = root_path('cache/' . $cachedFileName . '.katana.php');
+        return $this->process($template);
+    }
 
+    public function process(string $template): string 
+    {
+        $fileName = str_replace('/', '.', $this->layout);
+
+        $cachedFilePath = root_path(
+            'cache/' . time() . '-' . $fileName . '.kt.php'
+        );
+        
         file_put_contents($cachedFilePath, $template);
 
-        ob_start();
-        include $cachedFilePath;
-        $result = ob_get_clean();
+        $result = $this->buffer($cachedFilePath);
+
+        unlink($cachedFilePath);
 
         return $result;
+    }
+
+    private function buffer(string $file): string
+    {
+        ob_start();
+
+        include $file;
+        
+        return ob_get_clean();
     }
 }
