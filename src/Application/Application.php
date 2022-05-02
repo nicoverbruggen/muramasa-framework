@@ -25,7 +25,7 @@ class Application
 
     public function boot()
     {
-        require __DIR__ . '/../routes.php';
+        require base_path('routes.php');
     }
 
     public function run()

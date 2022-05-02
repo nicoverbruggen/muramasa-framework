@@ -17,6 +17,11 @@ function root_path(string $fileName): string
     return __DIR__ . '/../' . $fileName;
 }
 
+function base_path(string $fileName): string
+{
+    return __DIR__ . '/' . $fileName;
+}
+
 function view_path(string $view): ?string {
     $path = __DIR__ . '/../resources/views/' . $view;
 
