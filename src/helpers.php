@@ -27,11 +27,11 @@ function view_path(string $view): ?string {
     return $path;
 }
 
-function view($view, $fields): string {
+function view(string $view, array $slots = []): string {
     $layout = new Katana();
     
-    $values = array_merge($fields, [
-        'body' => (new Katana($view))->render($fields)
+    $values = array_merge($slots, [
+        'body' => (new Katana($view))->render($slots)
     ]);
 
     return $layout->render($values);
