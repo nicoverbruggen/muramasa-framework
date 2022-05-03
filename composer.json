@@ -8,6 +8,11 @@
             "src/helpers.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Nico Verbruggen",
@@ -16,5 +21,8 @@
     ],
     "require": {
         "filp/whoops": "^2.14"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }

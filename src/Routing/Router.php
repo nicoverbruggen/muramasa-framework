@@ -2,16 +2,22 @@
 
 namespace Framework\Routing;
 
+use Countable;
 use Framework\Http\Request;
 
-class Router
+class Router implements Countable
 {
     /** @var array<Route> */
-    public array $routes = [];
+    private array $routes = [];
 
     public function register(Route $route)
     {
         app()->router->routes[$route->method . '::' . $route->url] = $route;
+    }
+
+    public function count(): int 
+    {
+        return count($this->routes);
     }
 
     public function matches(Request $request): ?Route
